@@ -1,0 +1,586 @@
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+// Minimal, practical dictionaries to prove end-to-end localization.
+// Fallback is English for any missing keys/languages.
+
+const resources = {
+  en: {
+    translation: {
+      common: {
+        language: "Display Language",
+        phoneAutoConnect: "Phone Auto-Connect",
+        customization: "Customization",
+        changeFontSize: "Change Font Size",
+        changeThemeColour: "Change Theme Colour",
+        linked: "Linked: {{name}}",
+        unpaired: "Unpaired · scan QR to link",
+        unlinkPhone: "Unlink Phone",
+      },
+      sidebar: {
+        settings: "Settings",
+        map: "Map",
+        voice: "Voice",
+        bluetooth: "Bluetooth",
+        car: "Car",
+      },
+      topbar: {
+        searchLocked: "Search (locked while reversing)",
+        searchBar: "Search Bar",
+        gearShortcutTip: "Tip: Press Ctrl+P / Ctrl+N / Ctrl+D to change gear",
+      },
+      map: {
+        enterDestination: "Enter Destination",
+        routingTo: "Routing to: {{destination}}",
+        navigation: "Navigation",
+        tapToEnlarge: "Tap to enlarge",
+        openFullMap: "Open full navigation map",
+      },
+      car: {
+        drivingModes: "Driving Modes",
+        adaptiveCruise: "Adaptive Cruise Control",
+        autoParking: "Auto-Parking",
+        laneCentering: "Lane Centering",
+      },
+      voice: {
+        listening: "Listening...",
+        notSupported: "Voice not supported - try Chrome",
+        sayCommand: "Say a command, e.g. 'navigation'",
+      },
+      search: {
+        voiceSearch: "Voice search",
+        stop: "Stop",
+        quickAutoParking: "Auto-Parking",
+        quickPhoneConnect: "Phone Auto-Connect",
+        quickAdaptiveCruise: "Adaptive Cruise",
+        quickLaneCentering: "Lane Centering",
+        quickNavigation: "Navigation",
+      },
+      bluetooth: {
+        title: "Bluetooth",
+        deviceName: "Device Name",
+        pairedDevice: "Paired Device",
+        availableDevices: "Available Devices",
+        unpairedShort: "Unpaired · no device connected",
+        unpair: "Unpair",
+      },
+      brightness: {
+        auto: "Auto",
+        manual: "Manual",
+        decrease: "Decrease brightness",
+        increase: "Increase brightness",
+        toggle: "Toggle auto/manual brightness",
+        autoToManual: "Auto - tap for Manual",
+        manualToAuto: "Manual - tap for Auto",
+      },
+      climate: {
+        decrease: "Decrease temperature",
+        increase: "Increase temperature",
+        ac: "A/C",
+        ventDown: "Vent down",
+        ventMiddle: "Vent middle",
+        ventUp: "Vent up",
+      },
+      status: {
+        nearbyCharging: "NEARBY CHARGING STATION",
+        left: "Left",
+        traveled: "Traveled",
+        back: "Back",
+      },
+      traffic: {
+        tooClose: "TOO CLOSE - KEEP SAFE DISTANCE",
+        live: "LIVE",
+        view360: "360° View",
+      },
+      notFound: {
+        title: "Page not found",
+        goHome: "Go home",
+      },
+      reverse: {
+        topView: "TOP VIEW",
+      },
+    },
+  },
+  ms: {
+    translation: {
+      common: {
+        language: "Bahasa Paparan",
+        phoneAutoConnect: "Sambung Automatik Telefon",
+        customization: "Penyesuaian",
+        changeFontSize: "Tukar Saiz Fon",
+        changeThemeColour: "Tukar Warna Tema",
+        linked: "Dipaut: {{name}}",
+        unpaired: "Belum dipaut · imbas QR untuk pautkan",
+        unlinkPhone: "Putuskan Pautan",
+      },
+      sidebar: {
+        settings: "Tetapan",
+        map: "Peta",
+        voice: "Suara",
+        bluetooth: "Bluetooth",
+        car: "Kereta",
+      },
+      topbar: {
+        searchLocked: "Carian (dikunci semasa undur)",
+        searchBar: "Bar Carian",
+        gearShortcutTip: "Petua: Tekan Ctrl+P / Ctrl+N / Ctrl+D untuk tukar gear",
+      },
+      map: {
+        enterDestination: "Masukkan Destinasi",
+        routingTo: "Laluan ke: {{destination}}",
+        navigation: "Navigasi",
+        tapToEnlarge: "Sentuh untuk besarkan",
+        openFullMap: "Buka peta navigasi penuh",
+      },
+      car: {
+        drivingModes: "Mod Pemanduan",
+        adaptiveCruise: "Kawalan Jelajah Adaptif",
+        autoParking: "Parkir Automatik",
+        laneCentering: "Pusat Lorong",
+      },
+      voice: {
+        listening: "Sedang mendengar...",
+        notSupported: "Suara tidak disokong - cuba Chrome",
+        sayCommand: "Sebut arahan, contoh: 'navigasi'",
+      },
+      search: {
+        voiceSearch: "Carian suara",
+        stop: "Henti",
+        quickAutoParking: "Parkir Automatik",
+        quickPhoneConnect: "Sambung Automatik Telefon",
+        quickAdaptiveCruise: "Jelajah Adaptif",
+        quickLaneCentering: "Pusat Lorong",
+        quickNavigation: "Navigasi",
+      },
+      bluetooth: {
+        title: "Bluetooth",
+        deviceName: "Nama Peranti",
+        pairedDevice: "Peranti Dipaut",
+        availableDevices: "Peranti Tersedia",
+        unpairedShort: "Belum dipaut · tiada peranti",
+        unpair: "Nyahpaut",
+      },
+      brightness: {
+        auto: "Auto",
+        manual: "Manual",
+        decrease: "Kurangkan kecerahan",
+        increase: "Tambah kecerahan",
+        toggle: "Tukar auto/manual kecerahan",
+        autoToManual: "Auto - tekan untuk Manual",
+        manualToAuto: "Manual - tekan untuk Auto",
+      },
+      climate: {
+        decrease: "Kurangkan suhu",
+        increase: "Tambah suhu",
+        ac: "A/C",
+        ventDown: "Aliran bawah",
+        ventMiddle: "Aliran tengah",
+        ventUp: "Aliran atas",
+      },
+      status: {
+        nearbyCharging: "STESEN PENGECAS BERDEKATAN",
+        left: "Baki",
+        traveled: "Perjalanan",
+        back: "Kembali",
+      },
+      traffic: {
+        tooClose: "TERLALU DEKAT - JAGA JARAK SELAMAT",
+        live: "LANGSUNG",
+        view360: "Paparan 360°",
+      },
+      notFound: {
+        title: "Halaman tidak dijumpai",
+        goHome: "Kembali",
+      },
+      reverse: {
+        topView: "PANDANGAN ATAS",
+      },
+    },
+  },
+  iba: {
+    translation: {
+      common: {
+        language: "Bahasa Dipapar",
+        phoneAutoConnect: "Auto Sambung Telipun",
+        customization: "Ngerunding",
+        changeFontSize: "Ubah Besai Hurup",
+        changeThemeColour: "Ubah Tema Warna",
+        linked: "Nyambung: {{name}}",
+        unpaired: "Enda nyambung · scan QR",
+        unlinkPhone: "Putus Sambung",
+      },
+      sidebar: {
+        settings: "Setting",
+        map: "Map",
+        voice: "Suara",
+        bluetooth: "Bluetooth",
+        car: "Kereta",
+      },
+      map: {
+        enterDestination: "Masuk Destinasi",
+        routingTo: "Ngagai: {{destination}}",
+      },
+      car: {
+        drivingModes: "Driving Modes",
+        adaptiveCruise: "Adaptive Cruise",
+        autoParking: "Auto Parking",
+        laneCentering: "Lane Centering",
+      },
+      bluetooth: {
+        title: "Bluetooth",
+        deviceName: "Nama Device",
+        pairedDevice: "Device Nyambung",
+        availableDevices: "Device Bisi",
+        unpairedShort: "Enda nyambung",
+        unpair: "Unpair",
+      },
+      notFound: {
+        title: "Page nadai",
+        goHome: "Pulih",
+      },
+      reverse: {
+        topView: "TOP VIEW",
+      },
+    },
+  },
+  melanau: {
+    translation: {
+      common: {
+        language: "Bahasa Paparan",
+        phoneAutoConnect: "Sambung Telefon Auto",
+        customization: "Penyesuaian",
+        changeFontSize: "Tukar Saiz Fon",
+        changeThemeColour: "Tukar Warna Tema",
+        linked: "Dipaut: {{name}}",
+        unpaired: "Belum dipaut · imbas QR untuk paut",
+        unlinkPhone: "Putus Pautan",
+      },
+      sidebar: {
+        settings: "Tetapan",
+        map: "Peta",
+        voice: "Suara",
+        bluetooth: "Bluetooth",
+        car: "Kereta",
+      },
+      topbar: {
+        searchLocked: "Carian dikunci semasa undur",
+        searchBar: "Bar Carian",
+        gearShortcutTip: "Tip: Tekan Ctrl+P / Ctrl+N / Ctrl+D untuk tukar gear",
+      },
+      car: {
+        drivingModes: "Mod Pemanduan",
+        adaptiveCruise: "Kawalan Jelajah Adaptif",
+        autoParking: "Parkir Automatik",
+        laneCentering: "Pusat Lorong",
+      },
+    },
+  },
+  bidayuh: {
+    translation: {
+      common: {
+        language: "Bahasa Paparan",
+        phoneAutoConnect: "Sambung Telefon Auto",
+        customization: "Penyesuaian",
+        changeFontSize: "Tukar Saiz Fon",
+        changeThemeColour: "Tukar Warna Tema",
+        linked: "Dipaut: {{name}}",
+        unpaired: "Belum dipaut · imbas QR untuk paut",
+        unlinkPhone: "Putus Pautan",
+      },
+      sidebar: {
+        settings: "Tetapan",
+        map: "Peta",
+        voice: "Suara",
+        bluetooth: "Bluetooth",
+        car: "Kereta",
+      },
+      topbar: {
+        searchLocked: "Carian dikunci semasa undur",
+        searchBar: "Bar Carian",
+        gearShortcutTip: "Tip: Tekan Ctrl+P / Ctrl+N / Ctrl+D untuk tukar gear",
+      },
+      car: {
+        drivingModes: "Mod Pemanduan",
+        adaptiveCruise: "Kawalan Jelajah Adaptif",
+        autoParking: "Parkir Automatik",
+        laneCentering: "Pusat Lorong",
+      },
+    },
+  },
+  kelabit: {
+    translation: {
+      common: {
+        language: "Bahasa Paparan",
+        phoneAutoConnect: "Sambung Telefon Auto",
+        customization: "Penyesuaian",
+        changeFontSize: "Tukar Saiz Fon",
+        changeThemeColour: "Tukar Warna Tema",
+        linked: "Dipaut: {{name}}",
+        unpaired: "Belum dipaut · imbas QR untuk paut",
+        unlinkPhone: "Putus Pautan",
+      },
+      sidebar: {
+        settings: "Tetapan",
+        map: "Peta",
+        voice: "Suara",
+        bluetooth: "Bluetooth",
+        car: "Kereta",
+      },
+      topbar: {
+        searchLocked: "Carian dikunci semasa undur",
+        searchBar: "Bar Carian",
+        gearShortcutTip: "Tip: Tekan Ctrl+P / Ctrl+N / Ctrl+D untuk tukar gear",
+      },
+      car: {
+        drivingModes: "Mod Pemanduan",
+        adaptiveCruise: "Kawalan Jelajah Adaptif",
+        autoParking: "Parkir Automatik",
+        laneCentering: "Pusat Lorong",
+      },
+    },
+  },
+  "zh-Hans": {
+    translation: {
+      common: {
+        language: "显示语言",
+        phoneAutoConnect: "手机自动连接",
+        customization: "个性化",
+        changeFontSize: "更改字体大小",
+        changeThemeColour: "更改主题颜色",
+        linked: "已连接：{{name}}",
+        unpaired: "未连接 · 扫描二维码连接",
+        unlinkPhone: "取消连接",
+      },
+      sidebar: {
+        settings: "设置",
+        map: "地图",
+        voice: "语音",
+        bluetooth: "蓝牙",
+        car: "车辆",
+      },
+      map: {
+        enterDestination: "输入目的地",
+        routingTo: "导航到：{{destination}}",
+      },
+      car: {
+        drivingModes: "驾驶模式",
+        adaptiveCruise: "自适应巡航",
+        autoParking: "自动泊车",
+        laneCentering: "车道居中",
+      },
+      bluetooth: {
+        title: "蓝牙",
+        deviceName: "设备名称",
+        pairedDevice: "已配对设备",
+        availableDevices: "可用设备",
+        unpairedShort: "未配对 · 无设备连接",
+        unpair: "取消配对",
+      },
+      notFound: {
+        title: "页面未找到",
+        goHome: "返回主页",
+      },
+      reverse: {
+        topView: "俯视图",
+      },
+    },
+  },
+  "zh-Hant": {
+    translation: {
+      common: {
+        language: "顯示語言",
+        phoneAutoConnect: "手機自動連線",
+        customization: "自訂",
+        changeFontSize: "更改字體大小",
+        changeThemeColour: "更改主題顏色",
+        linked: "已連線：{{name}}",
+        unpaired: "未連線 · 掃描 QR 連線",
+        unlinkPhone: "取消連線",
+      },
+      sidebar: {
+        settings: "設定",
+        map: "地圖",
+        voice: "語音",
+        bluetooth: "藍牙",
+        car: "車輛",
+      },
+      map: {
+        enterDestination: "輸入目的地",
+        routingTo: "導航至：{{destination}}",
+      },
+      car: {
+        drivingModes: "駕駛模式",
+        adaptiveCruise: "自適應巡航",
+        autoParking: "自動泊車",
+        laneCentering: "車道置中",
+      },
+      bluetooth: {
+        title: "藍牙",
+        deviceName: "裝置名稱",
+        pairedDevice: "已配對裝置",
+        availableDevices: "可用裝置",
+        unpairedShort: "未配對 · 無裝置連線",
+        unpair: "取消配對",
+      },
+      notFound: {
+        title: "找不到頁面",
+        goHome: "回首頁",
+      },
+      reverse: {
+        topView: "俯視圖",
+      },
+    },
+  },
+  ta: {
+    translation: {
+      common: {
+        language: "காட்சி மொழி",
+        phoneAutoConnect: "தானாக இணைக்கும் தொலைபேசி",
+        customization: "தனிப்பயன்",
+        changeFontSize: "எழுத்து அளவை மாற்று",
+        changeThemeColour: "தீம் நிறத்தை மாற்று",
+        linked: "இணைக்கப்பட்டது: {{name}}",
+        unpaired: "இணைக்கப்படவில்லை · QR ஸ்கேன் செய்யவும்",
+        unlinkPhone: "இணைப்பை நீக்கு",
+      },
+      sidebar: {
+        settings: "அமைப்புகள்",
+        map: "வரைபடம்",
+        voice: "குரல்",
+        bluetooth: "ப்ளூடூத்",
+        car: "கார்",
+      },
+      map: {
+        enterDestination: "இலக்கை உள்ளிடவும்",
+        routingTo: "செல்லும் இடம்: {{destination}}",
+      },
+      car: {
+        drivingModes: "ஓட்டும் முறைகள்",
+        adaptiveCruise: "அடாப்டிவ் க்ரூஸ்",
+        autoParking: "தானியங்கி பார்க்கிங்",
+        laneCentering: "லேன் சென்டரிங்",
+      },
+      bluetooth: {
+        title: "ப்ளூடூத்",
+        deviceName: "சாதன பெயர்",
+        pairedDevice: "இணைக்கப்பட்ட சாதனம்",
+        availableDevices: "கிடைக்கும் சாதனங்கள்",
+        unpairedShort: "இணைக்கப்படவில்லை · சாதனம் இல்லை",
+        unpair: "இணைப்பை நீக்கு",
+      },
+      notFound: {
+        title: "பக்கம் இல்லை",
+        goHome: "முகப்பிற்கு",
+      },
+      reverse: {
+        topView: "மேல் பார்வை",
+      },
+    },
+  },
+  es: {
+    translation: {
+      common: {
+        language: "Idioma de pantalla",
+        phoneAutoConnect: "Conexión automática del teléfono",
+        customization: "Personalización",
+        changeFontSize: "Cambiar tamaño de fuente",
+        changeThemeColour: "Cambiar color del tema",
+        linked: "Vinculado: {{name}}",
+        unpaired: "Sin vincular · escanee QR para vincular",
+        unlinkPhone: "Desvincular teléfono",
+      },
+      sidebar: {
+        settings: "Ajustes",
+        map: "Mapa",
+        voice: "Voz",
+        bluetooth: "Bluetooth",
+        car: "Coche",
+      },
+      topbar: {
+        searchLocked: "Búsqueda (bloqueada al retroceder)",
+        searchBar: "Barra de búsqueda",
+        gearShortcutTip: "Consejo: presione Ctrl+P / Ctrl+N / Ctrl+D para cambiar marcha",
+      },
+      map: {
+        enterDestination: "Ingrese destino",
+        routingTo: "Ruta a: {{destination}}",
+        navigation: "Navegación",
+        tapToEnlarge: "Toca para ampliar",
+        openFullMap: "Abrir mapa de navegación completo",
+      },
+      car: {
+        drivingModes: "Modos de conducción",
+        adaptiveCruise: "Control crucero adaptativo",
+        autoParking: "Estacionamiento automático",
+        laneCentering: "Centrado de carril",
+      },
+      voice: {
+        listening: "Escuchando...",
+        notSupported: "Voz no compatible - pruebe Chrome",
+        sayCommand: "Diga un comando, por ejemplo: 'navegación'",
+      },
+      search: {
+        voiceSearch: "Búsqueda por voz",
+        stop: "Detener",
+        quickAutoParking: "Estacionamiento automático",
+        quickPhoneConnect: "Conexión automática del teléfono",
+        quickAdaptiveCruise: "Crucero adaptativo",
+        quickLaneCentering: "Centrado de carril",
+        quickNavigation: "Navegación",
+      },
+      bluetooth: {
+        title: "Bluetooth",
+        deviceName: "Nombre del dispositivo",
+        pairedDevice: "Dispositivo vinculado",
+        availableDevices: "Dispositivos disponibles",
+        unpairedShort: "Sin vincular · sin dispositivo conectado",
+        unpair: "Desvincular",
+      },
+      brightness: {
+        auto: "Auto",
+        manual: "Manual",
+        decrease: "Bajar brillo",
+        increase: "Subir brillo",
+        toggle: "Alternar brillo auto/manual",
+        autoToManual: "Auto - toque para Manual",
+        manualToAuto: "Manual - toque para Auto",
+      },
+      climate: {
+        decrease: "Bajar temperatura",
+        increase: "Subir temperatura",
+        ac: "A/C",
+        ventDown: "Ventilación abajo",
+        ventMiddle: "Ventilación media",
+        ventUp: "Ventilación arriba",
+      },
+      status: {
+        nearbyCharging: "ESTACIÓN DE CARGA CERCANA",
+        left: "Restante",
+        traveled: "Recorrido",
+        back: "Atrás",
+      },
+      traffic: {
+        tooClose: "DEMASIADO CERCA - MANTENGA DISTANCIA SEGURA",
+        live: "EN VIVO",
+        view360: "Vista 360°",
+      },
+      notFound: {
+        title: "Página no encontrada",
+        goHome: "Ir al inicio",
+      },
+      reverse: {
+        topView: "VISTA SUPERIOR",
+      },
+    },
+  },
+} as const;
+
+i18n.use(initReactI18next).init({
+  resources: resources as any,
+  lng: "en",
+  fallbackLng: "en",
+  interpolation: { escapeValue: false },
+});
+
+export default i18n;
+
